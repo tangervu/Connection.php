@@ -7,6 +7,7 @@ Example
 -------
 
     <?php
+    require('connection.php');
     $conn = new Connection('ftp://ftp.funet.fi');
     //List directory contents
     print_r($conn->ls());
