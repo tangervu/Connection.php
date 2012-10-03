@@ -5,12 +5,12 @@ A PHP class to transfer data using different protocols (sftp, ftp, http, etc). U
 
 Example
 -------
-    ```php
-    <?php
-    require('connection.php');
-    $conn = new Connection('ftp://ftp.funet.fi');
-    //List directory contents
-    print_r($conn->ls());
-    //Display contents of the README file
-    echo $conn->get('README');
-    ```
+```php
+<?php
+require('connection.php');
+$conn = new Connection('ftp://ftp.funet.fi');
+//List directory contents
+print_r($conn->ls());
+//Display contents of the README file
+echo $conn->get('README');
+```
