@@ -40,19 +40,21 @@ class Ssh2 implements \Connection\Backend {
 		}
 		
 		//Initialize connection
+		$host = urldecode($parsedUrl['host']);
 		if(isset($parsedUrl['port']) && $parsedUrl['port']) {
-			$this->ssh = ssh2_connect($parsedUrl['host'], $parsedUrl['port']);
+			$port = urldecode('port');
+			$this->ssh = ssh2_connect($host, $port);
 		}
 		else {
-			$this->ssh = ssh2_connect($parsedUrl['host']);
+			$this->ssh = ssh2_connect($host);
 		}
 		if($this->ssh === false) {
-			throw new \Connection\Exception("Could not connect to '{$parsedUrl['host']}'");
+			throw new \Connection\Exception("Could not connect to '$host'");
 		}
 		
 		//Check server fingerprint (if defined)
 		if($fingerprint) {
-			$serverFingerprint = ssh2_fingerprint($this->ssh);
+			$serverFingerprint = $this->getFingerprint();
 			if($fingerprint != $serverFingerprint) {
 				throw new \Connection\Exception("Server fingerprint '$serverFingerprint' does not match!");
 			}
@@ -67,19 +69,29 @@ class Ssh2 implements \Connection\Backend {
 				$status = ssh2_auth_pubkey_file($this->ssh, $pubkey['user'], $pubkey['pubkeyfile'], $pubkey['privkeyfile']);
 			}
 			if(!$status) {
-				throw new \Connection\Exception("Could not login to '{$parsedUrl['host']}' as '{$parsedUrl['user']}' using public key authentication");
+				throw new \Connection\Exception("Could not login to '$host' as '{$pubkey['user']}' using public key authentication");
 			}
 		}
 		else if(isset($parsedUrl['user']) && $parsedUrl['user']) { //Using login & password
-			if(!ssh2_auth_password($this->ssh, $parsedUrl['user'], $parsedUrl['pass'])) {
-				throw new \Connection\Exception("Could not login to '{$parsedUrl['host']}' as '{$parsedUrl['user']}'");
+			$user = urldecode($parsedUrl['user']);
+			$pass = urldecode($parsedUrl['pass']);
+			if(!ssh2_auth_password($this->ssh, $user, $pass)) {
+				throw new \Connection\Exception("Could not login to '$host' as '$user'");
 			}
 		}
 		
 		//Set default directory
 		if(isset($parsedUrl['path']) && $parsedUrl['path']) {
-			$this->cd($parsedUrl['path']);
+			$this->cd(urldecode($parsedUrl['path']));
 		}
+	}
+	
+	/**
+	 * Get server fingerprint
+	 * @note A ssh2/scp/sftp only feature
+	 */
+	public function getFingerprint() {
+		return ssh2_fingerprint($this->ssh);
 	}
 	
 	/**
