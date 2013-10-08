@@ -3,6 +3,7 @@
  * Establish a connection to a server using different PHP backends
  * 
  * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
 require_once(dirname(__FILE__) . '/connection/backend/ssh2.php');

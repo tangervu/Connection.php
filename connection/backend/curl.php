@@ -4,6 +4,7 @@
  * 
  * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
  * @note This backend hasn't been properly tested...
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 namespace Connection\Backend;
 

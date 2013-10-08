@@ -4,6 +4,7 @@
  * 
  * @author Tuomas Angervuori <tuomas.angervuori@gmail.com>
  * @note Does not support connections through proxy
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
 namespace Connection\Backend;

@@ -14,3 +14,7 @@ print_r($conn->ls());
 //Display contents of the README file
 echo $conn->get('README');
 ```
+
+License
+-------
+LGPL v3
