@@ -99,9 +99,16 @@ class Ssh2 implements \Connection\Backend {
 	 * Change directory
 	 */
 	public function cd($directory) {
-		$this->dir = $directory;
+		return $this->dir = $directory;
 	}
-	
+
+	/**
+	 * Print working directory
+	 */
+	public function pwd() {
+		return $this->dir;
+	}
+
 	/**
 	 * Download a file 
 	 * @note requires full path to file
@@ -127,6 +134,8 @@ class Ssh2 implements \Connection\Backend {
 		if(file_put_contents('ssh2.sftp://' . $this->_getSftp() . $file, $data) === false) {
 			throw new \Connection\Exception("Could not upload file '$file'");
 		}
+		
+		return true;
 	}
 	
 	/**

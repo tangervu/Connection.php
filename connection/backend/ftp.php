@@ -80,7 +80,7 @@ class FTP implements \Connection\Backend {
 		if(isset($data['path']) && $data['path']) {
 		    // Make sure the $path ends with a slash.
             $data['path'] = rtrim($data['path'], '/').'/';
-			$this->cd($data['path']);
+            $this->cd($data['path']);
 		}
 	}
 	
@@ -100,6 +100,17 @@ class FTP implements \Connection\Backend {
 		if(!ftp_chdir($this->conn, $directory)) {
 			throw new \Connection\Exception("Changing directory to '$directory' failed");
 		}
+		return true;
+	}
+
+	/**
+	 * Print working directory
+	 */
+	public function pwd() {
+		if(!$pwd = ftp_pwd($this->conn)) {
+			throw new \Connection\Exception("Printing working directory failed");
+		}
+		return $pwd;
 	}
 	
 	/**
@@ -130,6 +141,8 @@ class FTP implements \Connection\Backend {
 			throw new \Connection\Exception("Could not upload file '$remoteFile'");
 		}
 		fclose($file);
+		
+		return true;
 	}
 	
 	/**

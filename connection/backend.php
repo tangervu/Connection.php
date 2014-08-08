@@ -19,6 +19,11 @@ interface Backend {
 	 * Change directory
 	 */
 	public function cd($directory);
+
+	/**
+	 * Print working directory
+	 */
+	public function pwd();
 	
 	/**
 	 * Download a file 
