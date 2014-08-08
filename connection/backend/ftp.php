@@ -78,7 +78,9 @@ class FTP implements \Connection\Backend {
 		
 		//Go to defined directory
 		if(isset($data['path']) && $data['path']) {
-			$this->cd(dirname($data['path']));
+		    // Make sure the $path ends with a slash.
+            $data['path'] = rtrim($data['path'], '/').'/';
+			$this->cd($data['path']);
 		}
 	}
 	
