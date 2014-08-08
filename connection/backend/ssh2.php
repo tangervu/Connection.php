@@ -163,8 +163,8 @@ class Ssh2 implements \Connection\Backend {
 	 */
 	public function exists($path) {
 
-        $sshPath = sprintf('ssh2.sftp://%s/%s', $this->_getSftp(), $path);    
-	    
+        $sshPath = sprintf('ssh2.sftp://%s/%s', $this->_getSftp(), $this->dir . '/' . $path);    
+
         return file_exists($sshPath);
     }	
 	
