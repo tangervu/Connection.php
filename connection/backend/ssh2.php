@@ -159,6 +159,16 @@ class Ssh2 implements \Connection\Backend {
 	}
 	
 	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+
+        $sshPath = sprintf('ssh2.sftp://%s/%s', $this->_getSftp(), $path);    
+	    
+        return file_exists($sshPath);
+    }	
+	
+	/**
 	 * Delete a file from remote server
 	 */
 	public function rm($remoteFile) {

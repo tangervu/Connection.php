@@ -154,7 +154,14 @@ class Curl implements \Connection\Backend {
 	public function ls() {
 		throw new \Connection\Exception("Unable to list files using cURL backend");
 	}
-	
+
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+		throw new \Connection\Exception("Unable to check");
+    }	
+
 	/**
 	 * Delete a file from remote server
 	 */

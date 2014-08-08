@@ -75,6 +75,14 @@ class Connection {
 	public function ls() {
 		return $this->backend->ls();
 	}
+
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+		return $this->backend->exists($path);
+	}
+	
 	
 	/**
 	 * Delete a file from remote server

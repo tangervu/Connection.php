@@ -41,6 +41,11 @@ interface Backend {
 	public function ls();
 	
 	/**
+	 * File or directory exists
+	 */
+	public function exists($path);
+	
+	/**
 	 * Delete a file from remote server
 	 */
 	public function rm($remoteFile);

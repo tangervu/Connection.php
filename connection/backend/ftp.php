@@ -156,7 +156,18 @@ class FTP implements \Connection\Backend {
 		}
 		return $dir;
 	}
-	
+
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+        $listing = @ftp_nlist($this->conn, $path);
+        if(empty($listing)) 
+            return false;
+        else
+            return true;
+    }
+		
 	/**
 	 * Delete file from remote server
 	 */
