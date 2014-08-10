@@ -45,9 +45,16 @@ class Connection {
 	 * Change directory
 	 */
 	public function cd($directory) {
-		$this->backend->cd($directory);
+        return $this->backend->cd($directory);
 	}
 	
+	/**
+	 * Change directory
+	 */
+	public function pwd() {
+	   return $this->backend->pwd();
+	}
+		
 	/**
 	 * Download a file 
 	 */
@@ -59,7 +66,7 @@ class Connection {
 	 * Upload a file 
 	 */
 	public function put($data, $remoteFile) {
-		$this->backend->put($data, $remoteFile);
+		return $this->backend->put($data, $remoteFile);
 	}
 	
 	/**
@@ -68,33 +75,41 @@ class Connection {
 	public function ls() {
 		return $this->backend->ls();
 	}
+
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+		return $this->backend->exists($path);
+	}
+	
 	
 	/**
 	 * Delete a file from remote server
 	 */
 	public function rm($remoteFile) {
-		$this->backend->rm($remoteFile);
+		return $this->backend->rm($remoteFile);
 	}
 	
 	/**
 	 * Rename file in remote server
 	 */
 	public function mv($remoteFile, $newName) {
-		$this->backend->mv($remoteFile, $newName);
+		return $this->backend->mv($remoteFile, $newName);
 	}
 	
 	/**
 	 * Create a directory in remote server
 	 */
 	public function mkdir($dirName) {
-		$this->backend->mkdir($dirName);
+		return $this->backend->mkdir($dirName);
 	}
 	
 	/**
 	 * Remove a directory from remote server
 	 */
 	public function rmdir($dirName) {
-		$this->backend->rmdir($dirName);
+		return $this->backend->rmdir($dirName);
 	}
 	
 	/**

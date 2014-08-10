@@ -87,8 +87,17 @@ class Curl implements \Connection\Backend {
 	 */
 	public function cd($directory) {
 		throw new \Connection\Exception("Unable to change directory with cURL backend");
+		return true;
 	}
-	
+
+	/**
+	 * Print working directory
+	 */
+	public function pwd() {
+		throw new \Connection\Exception("Unable to print working directory");
+		return true;
+	}
+
 	/**
 	 * Download a file 
 	 */
@@ -145,7 +154,14 @@ class Curl implements \Connection\Backend {
 	public function ls() {
 		throw new \Connection\Exception("Unable to list files using cURL backend");
 	}
-	
+
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path) {
+		throw new \Connection\Exception("Unable to check");
+    }	
+
 	/**
 	 * Delete a file from remote server
 	 */

@@ -19,6 +19,11 @@ interface Backend {
 	 * Change directory
 	 */
 	public function cd($directory);
+
+	/**
+	 * Print working directory
+	 */
+	public function pwd();
 	
 	/**
 	 * Download a file 
@@ -34,6 +39,11 @@ interface Backend {
 	 * List current directory
 	 */
 	public function ls();
+	
+	/**
+	 * File or directory exists
+	 */
+	public function exists($path);
 	
 	/**
 	 * Delete a file from remote server
