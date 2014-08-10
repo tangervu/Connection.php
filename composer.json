@@ -1,0 +1,20 @@
+{
+	"name": "tangervu/connection",
+	"description": "A PHP class to transfer data using different protocols (sftp, ftp, http, etc). Utilizes PHPs ssh2, ftp and curl functions if available.",
+	"keywords": ["http","ftp","sftp","scp","ssh","curl"],
+	"homepage": "https://github.com/tangervu/Connection.php",
+	"license": "LGPL-3.0",
+	"authors": [
+		{
+			"name": "Tuomas Angervuori",
+			"email": "tuomas.angervuori@gmail.com",
+			"homepage": "http://anger.kapsi.fi/tuomas/",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-0": {
+			"Connection": ""
+		}
+	}
+}

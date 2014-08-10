@@ -7,9 +7,6 @@
  */
 namespace Connection\Backend;
 
-require_once(dirname(__FILE__) . '/../backend.php');
-require_once(dirname(__FILE__) . '/../exception.php');
-
 class Ssh2 implements \Connection\Backend {
 	
 	protected $ssh;

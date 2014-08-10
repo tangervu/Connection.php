@@ -9,10 +9,7 @@
 
 namespace Connection\Backend;
 
-require_once(dirname(__FILE__) . '/../backend.php');
-require_once(dirname(__FILE__) . '/../exception.php');
-
-class FTP implements \Connection\Backend {
+class Ftp implements \Connection\Backend {
 	
 	protected $conn;
 	

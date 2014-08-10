@@ -6,11 +6,6 @@
  * @license http://opensource.org/licenses/LGPL-3.0 LGPL v3
  */
 
-require_once(dirname(__FILE__) . '/connection/backend/ssh2.php');
-require_once(dirname(__FILE__) . '/connection/backend/ftp.php');
-require_once(dirname(__FILE__) . '/connection/backend/curl.php');
-require_once(dirname(__FILE__) . '/connection/exception.php');
-
 class Connection {
 	
 	protected $backend;
