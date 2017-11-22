@@ -40,7 +40,7 @@ class Ssh2 implements \Connection\Backend {
 		//Initialize connection
 		$host = urldecode($parsedUrl['host']);
 		if(isset($parsedUrl['port']) && $parsedUrl['port']) {
-			$port = urldecode('port');
+			$port = urldecode($parsedUrl['port']);
 			$this->ssh = ssh2_connect($host, $port);
 		}
 		else {
